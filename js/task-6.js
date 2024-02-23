@@ -5,9 +5,12 @@ function getRandomHexColor() {
 }
 
 const createButton = document.querySelector("button[data-create]");
+const destroyButton = document.querySelector("button[data-destroy]");
+const input = document.querySelector("input");
+const boxesContainer = document.querySelector("#boxes");
 
 function createBoxes(amount) {
-  const boxesContainer = document.querySelector("#boxes");
+  boxesContainer.innerHTML = "";
 
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
@@ -23,20 +26,17 @@ function createBoxes(amount) {
 createButton.addEventListener("click", handleClick);
 
 function handleClick() {
-  const input = document.querySelector("input");
-  const amount = input.value;
+  const amount = parseInt(input.value);
 
   if (amount >= 1 && amount <= 100) {
+    destroyBoxes();
     createBoxes(amount);
     input.value = "";
   }
 }
 
-const destroyButton = document.querySelector("button[data-destroy]");
-
 destroyButton.addEventListener("click", destroyBoxes);
 
 function destroyBoxes() {
-  const boxesContainer = document.querySelector("#boxes");
   boxesContainer.innerHTML = "";
 }

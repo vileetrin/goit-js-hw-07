@@ -4,10 +4,12 @@ const output = document.querySelector("#name-output");
 input.addEventListener("input", handleInput);
 
 function handleInput(event) {
-    if (event.currentTarget.value === "") {
-        output.innerHTML = "Anonimous"
+const trimmedValue = event.currentTarget.value.trim();
+
+    if (trimmedValue === "") {
+        output.textContent = "Anonymous"
     } else {
-output.innerHTML = event.currentTarget.value;
+output.textContent = trimmedValue;
     }
     
 }
